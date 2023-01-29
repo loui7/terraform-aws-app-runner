@@ -111,6 +111,7 @@ resource "aws_apprunner_service" "this" {
                   port                          = try(code_configuration_values.value.port, null)
                   runtime                       = code_configuration_values.value.runtime
                   runtime_environment_variables = try(code_configuration_values.value.runtime_environment_variables, {})
+                  runtime_environment_secrets   = try(code_configuration_values.value.runtime_environment_secrets, {})
                   start_command                 = try(code_configuration_values.value.start_command, null)
                 }
               }
@@ -142,6 +143,7 @@ resource "aws_apprunner_service" "this" {
             content {
               port                          = try(image_configuration.value.port, null)
               runtime_environment_variables = try(image_configuration.value.runtime_environment_variables, {})
+              runtime_environment_secrets   = try(image_configuration.value.runtime_environment_secrets, {})
               start_command                 = try(image_configuration.value.start_command, null)
             }
           }
